@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui/Car%20Rental%20UI/Car%20Details.dart';
 import 'package:flutterui/Car%20Rental%20UI/Constants.dart';
+import 'package:flutterui/Widgets/Fade%20Route.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,151 +68,179 @@ class CarRentalHomePage extends StatelessWidget {
       drawer: Container(),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Welcome User!",
-                  style: GoogleFonts.montserrat(fontWeight: FontWeight.w600)),
-              box5,
-              Text("Find Your Cars!",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 25, fontWeight: FontWeight.w900)),
-              box20,
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: TextFormField(
-                        cursorColor: Colors.black,
-                        decoration: new InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ),
-                            filled: true,
-                            fillColor: CarRentalUI.primaryColor,
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.only(
-                                left: 15, bottom: 11, top: 15, right: 15),
-                            hintText: "Search Cars"),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 48,
-                    width: 48,
-                    decoration: BoxDecoration(
-                        color: CarRentalUI.secondaryColor,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Icon(
-                      Icons.sort,
-                      color: CarRentalUI.primaryColor,
-                    ),
-                  )
-                ],
-              ),
-              box15,
               Container(
-                height: 85,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: carsLogo.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: EdgeInsets.only(right: 16),
-                        width: MediaQuery.of(context).size.width / 5.1,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Welcome User!",
+                        style: GoogleFonts.montserrat(
+                            fontWeight: FontWeight.w600)),
+                    box5,
+                    Text("Find Your Cars!",
+                        style: GoogleFonts.montserrat(
+                            fontSize: 25, fontWeight: FontWeight.w900)),
+                    box20,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: TextFormField(
+                              cursorColor: Colors.black,
+                              decoration: new InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.search,
+                                    color: Colors.grey,
+                                  ),
+                                  filled: true,
+                                  fillColor: CarRentalUI.primaryColor,
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                      left: 15, bottom: 11, top: 15, right: 15),
+                                  hintText: "Search Cars"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          height: 48,
+                          width: 48,
+                          decoration: BoxDecoration(
+                              color: CarRentalUI.secondaryColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Icon(
+                            Icons.sort,
                             color: CarRentalUI.primaryColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        child: Image.network(carsLogo[index]),
-                      );
-                    }),
+                          ),
+                        )
+                      ],
+                    ),
+                    box15,
+                    Container(
+                      height: 85,
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: carsLogo.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              margin: EdgeInsets.only(right: 16),
+                              width: MediaQuery.of(context).size.width / 5.1,
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color: CarRentalUI.primaryColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Image.network(carsLogo[index]),
+                            );
+                          }),
+                    ),
+                    box10,
+                  ],
+                ),
               ),
-              box30,
-              Text("Available Car's",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 17, fontWeight: FontWeight.w800)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text("Available Car's",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 17, fontWeight: FontWeight.w800)),
+              ),
               box15,
               Container(
                 height: 200,
                 child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: cars.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: EdgeInsets.only(right: 20),
-                        width: MediaQuery.of(context).size.width / 2.35,
-                        decoration: BoxDecoration(
-                            color: CarRentalUI.primaryColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            box20,
-                            Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.all(4),
-                                    width: double.maxFinite,
-                                    child: Image.network(
-                                      cars[index]["img"],
-                                      fit: BoxFit.contain,
-                                    ))),
-                            box10,
-                            Expanded(
-                                child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(cars[index]["name"],
-                                      style: GoogleFonts.montserrat(
-                                          fontSize: 15,
-                                          color: CarRentalUI.secondaryColor,
-                                          fontWeight: FontWeight.w700)),
-                                  box10,
-                                  Text(cars[index]["price"],
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.grey[400],
-                                          fontWeight: FontWeight.w700)),
-                                ],
-                              ),
-                            )),
-                          ],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            FadeRoute(page: CarDetails()),
+                          );
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: 20),
+                          width: MediaQuery.of(context).size.width / 2.35,
+                          decoration: BoxDecoration(
+                              color: CarRentalUI.primaryColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              box20,
+                              Expanded(
+                                  child: Container(
+                                      padding: EdgeInsets.all(4),
+                                      width: double.maxFinite,
+                                      child: Image.network(
+                                        cars[index]["img"],
+                                        fit: BoxFit.contain,
+                                      ))),
+                              box10,
+                              Expanded(
+                                  child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(cars[index]["name"],
+                                        style: GoogleFonts.montserrat(
+                                            fontSize: 15,
+                                            color: CarRentalUI.secondaryColor,
+                                            fontWeight: FontWeight.w700)),
+                                    box10,
+                                    Text(cars[index]["price"],
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[400],
+                                            fontWeight: FontWeight.w700)),
+                                  ],
+                                ),
+                              )),
+                            ],
+                          ),
                         ),
                       );
                     }),
               ),
               box30,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Best Car's",
-                      style: GoogleFonts.montserrat(
-                          fontSize: 17, fontWeight: FontWeight.w800)),
-                  Text("See all",
-                      style: GoogleFonts.montserrat(
-                          fontSize: 13, fontWeight: FontWeight.w600)),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Best Car's",
+                        style: GoogleFonts.montserrat(
+                            fontSize: 17, fontWeight: FontWeight.w800)),
+                    Text("See all",
+                        style: GoogleFonts.montserrat(
+                            fontSize: 13, fontWeight: FontWeight.w600)),
+                  ],
+                ),
               ),
               box15,
               ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: carsVertical.length,
@@ -247,12 +277,26 @@ class CarRentalHomePage extends StatelessWidget {
                                       color: CarRentalUI.secondaryColor,
                                       fontWeight: FontWeight.w700)),
                               box10,
-                              Text(carsVertical[index]["price"],
+                              Text("Sports, Coupe",
                                   style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.grey[400],
                                       fontWeight: FontWeight.w700)),
                             ],
+                          ),
+                          Spacer(),
+                          Column(
+                            children: [
+                              box30,
+                              Text(carsVertical[index]["price"],
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: CarRentalUI.secondaryColor,
+                                      fontWeight: FontWeight.w700)),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20,
                           ),
                         ],
                       ),
