@@ -34,7 +34,9 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: new GridTile(
-                footer: new Text(screens[i].name),
+                footer: new Text(screens[i].name,
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                 child: new Text(screens[i]
                     .img), //just for testing, will fill with image later
               ),

@@ -15,6 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter UI',
       theme: themeData(context),
       home: HomePage(),
-    );
+    );  
   }
 }

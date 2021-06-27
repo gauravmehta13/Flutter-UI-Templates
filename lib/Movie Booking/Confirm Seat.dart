@@ -6,6 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../Constants.dart';
 
+class Seats {
+  bool selected;
+  bool booked;
+  Seats({
+    this.selected = false,
+    this.booked = false,
+  });
+}
+
 class ConfirmMovieSeat extends StatefulWidget {
   const ConfirmMovieSeat({Key? key}) : super(key: key);
 
@@ -14,20 +23,39 @@ class ConfirmMovieSeat extends StatefulWidget {
 }
 
 class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
-  List<bool> seats = [];
+  List<Seats> seats = [];
   void initState() {
     super.initState();
     init();
   }
 
+  late int price = 0;
+
+  calculatePrice() {
+    var total = 0;
+    for (var i = 0; i < seats.length; i++) {
+      if (seats[i].selected)
+        setState(() {
+          total = total + 1;
+        });
+      print("object");
+    }
+    print(total);
+    setState(() {
+      price = total * 25;
+    });
+    print(price);
+  }
+
   init() {
     var rng = new Random();
-    seats = new List<bool>.generate(45, (_) => false);
+    seats = new List<Seats>.generate(45, (_) => Seats());
     var randomList = new List.generate(11, (_) => rng.nextInt(45));
 
     for (var i = 0; i < randomList.length; i++) {
       int j = randomList[i];
-      seats[j] = true;
+      seats[j].booked = true;
+      print("object$i");
     }
   }
 
@@ -96,19 +124,32 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 10),
                       itemBuilder: (BuildContext context, int index) {
-                        return new Container(
-                          decoration: BoxDecoration(
-                              color: seats[index]
-                                  ? Colors.grey[700]
-                                  : Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                        return InkWell(
+                          onTap: () {
+                            if (!seats[index].booked)
+                              setState(() {
+                                seats[index].selected = !seats[index].selected;
+                              });
+                            else {}
+                            calculatePrice();
+                          },
+                          child: new Container(
+                            decoration: BoxDecoration(
+                                color: seats[index].selected
+                                    ? Colors.red
+                                    : seats[index].booked == true
+                                        ? Colors.white
+                                        : Colors.grey[700],
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
                         );
                       },
                     ),
                   ],
                 ),
               ),
+              box20,
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -172,12 +213,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    FadeRoute(page: ConfirmMovieSeat()),
-                  );
-                },
+                onTap: () {},
                 child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -200,7 +236,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                       width: double.infinity,
                       child: Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               "Buy Ticket",
@@ -208,12 +244,14 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600),
                             ),
-                            Text(
-                              "\$ 25",
-                              style: GoogleFonts.montserrat(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                            ),
+                            if (price != 0) Spacer(),
+                            if (price != 0)
+                              Text(
+                                "\$ $price",
+                                style: GoogleFonts.montserrat(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
                           ],
                         ),
                       ),
