@@ -24,9 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
   cached_network_image: ^3.0.0
-  carousel_slider: ^3.0.0
+  card_swiper: ^1.0.2
+  carousel_slider: ^4.0.0
   confetti: ^0.5.5
   cupertino_icons: ^1.0.3
+  dashed_circle: ^0.0.2
   dio: ^4.0.0
   dotted_border: ^2.0.0
   dotted_line: ^3.0.0
@@ -45,22 +47,21 @@ dependencies:
   font_awesome_flutter: ^9.0.0
   google_fonts: ^2.1.0
   grouped_list: ^4.0.0
+  intl: ^0.17.0
   introduction_screen: ^2.1.0
   pin_code_fields: ^7.2.0
   rating_dialog: ^2.0.0
   share_plus: ^2.1.4
   shared_preferences: ^2.0.6
   shimmer: ^2.0.0
+  story: ^0.5.1
   syncfusion_flutter_maps: ^19.1.69-beta
   timelines: ^0.1.0
   url_launcher: ^6.0.6
+  video_player: ^1.0.1
   webview_flutter: ^2.0.8
   whatsapp_unilink: ^2.0.0
   youtube_player_iframe: ^2.1.0
-  video_player: ^1.0.1
-  story: ^0.5.1
-  dashed_circle: ^0.0.2
-  card_swiper: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +69,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -80,13 +80,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/CarRental/verna/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gaurav.flutterui">
    <application
-        android:label="flutterui"
+        android:label="Flutter UI Templates"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

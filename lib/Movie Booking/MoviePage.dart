@@ -1,10 +1,10 @@
 import 'dart:ui';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutterui/Constants.dart';
 import 'package:flutterui/Movie%20Booking/Components/Date%20Card.dart';
+import 'package:flutterui/Movie%20Booking/Confirm%20Seat.dart';
+import 'package:flutterui/Widgets/Fade%20Route.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,6 +17,20 @@ class MovieDetails extends StatefulWidget {
 }
 
 class _MovieDetailsState extends State<MovieDetails> {
+  List<DateTime> dates = [];
+  void initState() {
+    super.initState();
+
+    final myList = List<DateTime>.generate(7, (index) {
+      return DateTime.now().add(new Duration(days: index));
+    });
+
+    dates = myList;
+    print(dates);
+  }
+
+  int _current = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +66,7 @@ class _MovieDetailsState extends State<MovieDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Spacer(),
               box20,
               Container(
                 padding: EdgeInsets.all(30),
@@ -103,61 +118,83 @@ class _MovieDetailsState extends State<MovieDetails> {
                     ),
                     box10,
                     Text(
-                      "Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director Director ",
+                      "An Ironman Triathlon is one of a series of long-distance triathlon races organized by the World Triathlon Corporation, consisting of a 2.4-mile swim, a 112-mile bicycle ride and a marathon 26.22-mile run, raced in that order. It is widely considered one of the most difficult one-day sporting events in the world.",
                       style: TextStyle(
                           color: Colors.white60,
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
                     box30,
+                    box20,
                     Text(
                       "Select Date",
                       style: GoogleFonts.montserrat(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 25,
                           fontWeight: FontWeight.w600),
                     ),
-                    box20,
                     box30,
                   ],
                 ),
               ),
               CarouselSlider(
                 options: CarouselOptions(
-                  autoPlay: true,
-                  aspectRatio: 2.0,
-                  enlargeCenterPage: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                ),
-                items: [DateCard()],
+                    autoPlay: false,
+                    height: 120,
+                    viewportFraction: 0.2,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                    onPageChanged: (e, x) {
+                      setState(() {
+                        _current = e;
+                      });
+                      print(dates[e]);
+                    }),
+                items: List.generate(dates.length, (index) {
+                  return DateCard(
+                    date: dates[index],
+                    current: _current,
+                    index: index,
+                  );
+                }),
               ),
               box30,
-              Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      stops: [0.1, 0.5, 0.9],
-                      colors: [
-                        Color.fromARGB(255, 254, 69, 65),
-                        Color.fromARGB(255, 213, 59, 54),
-                        Color.fromARGB(255, 171, 50, 47)
-                      ],
-                    ),
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  child: SizedBox(
-                    height: 55,
-                    width: double.infinity,
-                    child: Center(
-                      child: Text(
-                        "Reservation",
-                        style: GoogleFonts.montserrat(
-                            color: Colors.white, fontWeight: FontWeight.w600),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    FadeRoute(page: ConfirmMovieSeat()),
+                  );
+                },
+                child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        stops: [0.1, 0.5, 0.9],
+                        colors: [
+                          Color.fromARGB(255, 254, 69, 65),
+                          Color.fromARGB(255, 213, 59, 54),
+                          Color.fromARGB(255, 171, 50, 47)
+                        ],
                       ),
                     ),
-                  )),
+                    clipBehavior: Clip.hardEdge,
+                    child: SizedBox(
+                      height: 60,
+                      width: double.infinity,
+                      child: Center(
+                        child: Text(
+                          "Reservation",
+                          style: GoogleFonts.montserrat(
+                              color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    )),
+              ),
             ],
           ),
         ),

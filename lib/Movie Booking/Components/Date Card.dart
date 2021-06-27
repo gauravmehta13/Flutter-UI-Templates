@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/Constants.dart';
+import 'package:intl/intl.dart';
 
 class DateCard extends StatelessWidget {
-  final date;
+  final DateTime date;
+  final index;
+  final current;
 
   const DateCard({
-    this.date,
+    required this.date,
+    this.current,
+    this.index,
     Key? key,
   }) : super(key: key);
 
@@ -24,11 +29,17 @@ class DateCard extends StatelessWidget {
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight,
                   stops: [0.1, 0.5, 0.9],
-                  colors: [
-                    Color.fromARGB(255, 254, 69, 65),
-                    Color.fromARGB(255, 213, 59, 54),
-                    Color.fromARGB(255, 171, 50, 47)
-                  ],
+                  colors: index != current
+                      ? [
+                          Colors.grey[700]!,
+                          Color(0xFF22222e),
+                          Colors.grey[800]!,
+                        ]
+                      : [
+                          Color.fromARGB(255, 254, 69, 65),
+                          Color.fromARGB(255, 213, 59, 54),
+                          Color.fromARGB(255, 171, 50, 47)
+                        ],
                 ),
               ),
               width: 100,
@@ -43,9 +54,29 @@ class DateCard extends StatelessWidget {
                       radius: 5,
                       backgroundColor: Color.fromARGB(255, 14, 14, 24),
                     ),
-                    Text("Fri", style: TextStyle(color: Colors.white)),
-                    Text("10",
-                        style: TextStyle(fontSize: 20, color: Colors.white)),
+                    Text(
+                        DateFormat('EEEE')
+                            .format(date)
+                            .toString()
+                            .substring(0, 3),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600)),
+                    Column(
+                      children: [
+                        Text(date.day.toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600)),
+                        Text(
+                            DateFormat('MMM')
+                                .format(date)
+                                .toString()
+                                .substring(0, 3),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 12)),
+                      ],
+                    ),
                   ],
                 ),
               )),
