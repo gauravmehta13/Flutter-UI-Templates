@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/Car%20Rental%20UI/Constants.dart';
-import 'package:flutterui/Car%20Rental%20UI/HomePage.dart';
+import 'package:flutterui/HomePage.dart';
+import 'Constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter UI',
       theme: themeData(context),
-      home: CarRentalHomePage(),
+      home: HomePage(),
     );
   }
 }

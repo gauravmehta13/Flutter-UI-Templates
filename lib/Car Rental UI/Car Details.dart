@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/Car%20Rental%20UI/Constants.dart';
 import 'package:flutterui/Widgets/imageview360.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Constants.dart';
 
 class CarDetails extends StatefulWidget {
   const CarDetails({Key? key}) : super(key: key);
@@ -47,13 +48,13 @@ class _CarDetailsState extends State<CarDetails> {
         centerTitle: true,
         title: Text("Car Details",
             style: GoogleFonts.montserrat(
-                color: CarRentalUI.secondaryColor,
+                color: CarRental.secondaryColor,
                 fontSize: 17,
                 fontWeight: FontWeight.w600)),
         elevation: 0,
         leading: Icon(
           Icons.arrow_back_ios,
-          color: CarRentalUI.secondaryColor,
+          color: CarRental.secondaryColor,
         ),
         actions: [
           IconButton(
@@ -61,7 +62,7 @@ class _CarDetailsState extends State<CarDetails> {
               icon: Icon(
                 FontAwesomeIcons.tags,
                 size: 18,
-                color: CarRentalUI.secondaryColor,
+                color: CarRental.secondaryColor,
               ))
         ],
       ),
@@ -95,7 +96,7 @@ class _CarDetailsState extends State<CarDetails> {
                     child: Container(
                       width: double.maxFinite,
                       decoration: BoxDecoration(
-                          color: CarRentalUI.primaryColor,
+                          color: CarRental.primaryColor,
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       padding: EdgeInsets.all(20),
                       child: Column(
@@ -110,7 +111,7 @@ class _CarDetailsState extends State<CarDetails> {
                                 children: [
                                   Text("Honda Civic",
                                       style: GoogleFonts.montserrat(
-                                          color: CarRentalUI.secondaryColor,
+                                          color: CarRental.secondaryColor,
                                           fontSize: 24,
                                           fontWeight: FontWeight.w800)),
                                   box5,
@@ -123,7 +124,7 @@ class _CarDetailsState extends State<CarDetails> {
                               ),
                               Text("\$ 250/day",
                                   style: GoogleFonts.montserrat(
-                                      color: CarRentalUI.secondaryColor,
+                                      color: CarRental.secondaryColor,
                                       fontSize: 17,
                                       fontWeight: FontWeight.w800)),
                             ],
@@ -131,7 +132,7 @@ class _CarDetailsState extends State<CarDetails> {
                           Spacer(),
                           Text("Description",
                               style: GoogleFonts.montserrat(
-                                  color: CarRentalUI.secondaryColor,
+                                  color: CarRental.secondaryColor,
                                   fontSize: 17,
                                   fontWeight: FontWeight.w800)),
                           box10,
@@ -157,10 +158,10 @@ class _CarDetailsState extends State<CarDetails> {
                                           3.5,
                                       decoration: BoxDecoration(
                                           color: index != 0
-                                              ? CarRentalUI.primaryColor
-                                              : CarRentalUI.primaryColor,
+                                              ? CarRental.primaryColor
+                                              : CarRental.primaryColor,
                                           border: Border.all(
-                                            color: CarRentalUI.secondaryColor,
+                                            color: CarRental.secondaryColor,
                                           ),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
@@ -175,8 +176,8 @@ class _CarDetailsState extends State<CarDetails> {
                                           Text(details[index]["value"],
                                               style: GoogleFonts.montserrat(
                                                   fontSize: 14,
-                                                  color: CarRentalUI
-                                                      .secondaryColor,
+                                                  color:
+                                                      CarRental.secondaryColor,
                                                   fontWeight: FontWeight.w700)),
                                           Text(details[index]["property"],
                                               style: TextStyle(
@@ -200,8 +201,8 @@ class _CarDetailsState extends State<CarDetails> {
                                 width: double.infinity,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    primary: CarRentalUI
-                                        .secondaryColor, // background
+                                    primary:
+                                        CarRental.secondaryColor, // background
                                     onPrimary: Colors.white, // foreground
                                   ),
                                   onPressed: () {},

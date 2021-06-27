@@ -60,6 +60,7 @@ dependencies:
   video_player: ^1.0.1
   story: ^0.5.1
   dashed_circle: ^0.0.2
+  card_swiper: ^1.0.2
 
 dev_dependencies:
   flutter_test:

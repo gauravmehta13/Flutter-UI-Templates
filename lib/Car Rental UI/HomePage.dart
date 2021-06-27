@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/Car%20Rental%20UI/Car%20Details.dart';
-import 'package:flutterui/Car%20Rental%20UI/Constants.dart';
 import 'package:flutterui/Widgets/Fade%20Route.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Constants.dart';
 
 class CarRentalHomePage extends StatelessWidget {
   const CarRentalHomePage({Key? key}) : super(key: key);
@@ -54,14 +54,14 @@ class CarRentalHomePage extends StatelessWidget {
         elevation: 0,
         leading: Icon(
           Icons.menu,
-          color: CarRentalUI.secondaryColor,
+          color: CarRental.secondaryColor,
         ),
         actions: [
           IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.notifications,
-                color: CarRentalUI.secondaryColor,
+                color: CarRental.secondaryColor,
               ))
         ],
       ),
@@ -100,7 +100,7 @@ class CarRentalHomePage extends StatelessWidget {
                                     color: Colors.grey,
                                   ),
                                   filled: true,
-                                  fillColor: CarRentalUI.primaryColor,
+                                  fillColor: CarRental.primaryColor,
                                   border: InputBorder.none,
                                   focusedBorder: InputBorder.none,
                                   enabledBorder: InputBorder.none,
@@ -119,12 +119,12 @@ class CarRentalHomePage extends StatelessWidget {
                           height: 48,
                           width: 48,
                           decoration: BoxDecoration(
-                              color: CarRentalUI.secondaryColor,
+                              color: CarRental.secondaryColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                           child: Icon(
                             Icons.sort,
-                            color: CarRentalUI.primaryColor,
+                            color: CarRental.primaryColor,
                           ),
                         )
                       ],
@@ -143,7 +143,7 @@ class CarRentalHomePage extends StatelessWidget {
                               width: MediaQuery.of(context).size.width / 5.1,
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  color: CarRentalUI.primaryColor,
+                                  color: CarRental.primaryColor,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
                               child: Image.network(carsLogo[index]),
@@ -181,7 +181,7 @@ class CarRentalHomePage extends StatelessWidget {
                           margin: EdgeInsets.only(right: 20),
                           width: MediaQuery.of(context).size.width / 2.35,
                           decoration: BoxDecoration(
-                              color: CarRentalUI.primaryColor,
+                              color: CarRental.primaryColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           child: Column(
@@ -206,7 +206,7 @@ class CarRentalHomePage extends StatelessWidget {
                                     Text(cars[index]["name"],
                                         style: GoogleFonts.montserrat(
                                             fontSize: 15,
-                                            color: CarRentalUI.secondaryColor,
+                                            color: CarRental.secondaryColor,
                                             fontWeight: FontWeight.w700)),
                                     box10,
                                     Text(cars[index]["price"],
@@ -250,13 +250,13 @@ class CarRentalHomePage extends StatelessWidget {
                       width: double.maxFinite,
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color: CarRentalUI.primaryColor,
+                          color: CarRental.primaryColor,
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Row(
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: CarRentalUI.bgColor,
+                                color: CarRental.bgColor,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(13))),
                             height: 65,
@@ -274,7 +274,7 @@ class CarRentalHomePage extends StatelessWidget {
                               Text(carsVertical[index]["name"],
                                   style: GoogleFonts.montserrat(
                                       fontSize: 15,
-                                      color: CarRentalUI.secondaryColor,
+                                      color: CarRental.secondaryColor,
                                       fontWeight: FontWeight.w700)),
                               box10,
                               Text("Sports, Coupe",
@@ -291,7 +291,7 @@ class CarRentalHomePage extends StatelessWidget {
                               Text(carsVertical[index]["price"],
                                   style: TextStyle(
                                       fontSize: 12,
-                                      color: CarRentalUI.secondaryColor,
+                                      color: CarRental.secondaryColor,
                                       fontWeight: FontWeight.w700)),
                             ],
                           ),

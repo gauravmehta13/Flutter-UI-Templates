@@ -38,7 +38,13 @@ const SizedBox box30 = SizedBox(
   height: 30,
 );
 
-class CarRentalUI {
+class CarRental {
+  static const Color primaryColor = Color(0xFFffffff);
+  static const Color secondaryColor = Color(0xFF021637);
+  static const Color bgColor = Color(0xFFf9fafe);
+}
+
+class MovieBooking {
   static const Color primaryColor = Color(0xFFffffff);
   static const Color secondaryColor = Color(0xFF021637);
   static const Color bgColor = Color(0xFFf9fafe);
