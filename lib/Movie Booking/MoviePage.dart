@@ -78,6 +78,7 @@ class _MovieDetailsState extends State<MovieDetails> {
               child: new Container(),
             )),
             Container(
+              color: Colors.black.withOpacity(0.4),
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
@@ -87,14 +88,15 @@ class _MovieDetailsState extends State<MovieDetails> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        Icon(Icons.arrow_back_ios),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                        ),
                         Spacer(),
                         IconButton(
                             onPressed: () {},
-                            icon: Icon(
-                              FontAwesomeIcons.tags,
-                              size: 18,
-                            )),
+                            icon: Icon(FontAwesomeIcons.tags,
+                                size: 18, color: Colors.white)),
                       ],
                     ),
                   ),

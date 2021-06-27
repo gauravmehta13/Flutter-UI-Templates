@@ -111,7 +111,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -136,10 +136,10 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                           child: new Container(
                             decoration: BoxDecoration(
                                 color: seats[index].selected
-                                    ? Colors.red
+                                    ? Color(0xFFde3d36)
                                     : seats[index].booked == true
                                         ? Colors.white
-                                        : Colors.grey[700],
+                                        : Colors.blueGrey[800],
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                           ),
@@ -159,7 +159,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                       children: [
                         CircleAvatar(
                           radius: 5,
-                          backgroundColor: Colors.grey,
+                          backgroundColor: Colors.blueGrey[800],
                         ),
                         SizedBox(
                           width: 10,
