@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/HomePage.dart';
 import 'Constants.dart';
+import 'Movie Booking/HomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter UI',
       theme: themeData(context),
-      home: HomePage(),
-    );  
+      home: MovieBookingHomePage(),
+    );
   }
 }

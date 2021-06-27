@@ -1,9 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutterui/Widgets/Fade%20Route.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Constants.dart';
 
 class Seats {
@@ -110,6 +108,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                   ],
                 ),
               ),
+              Spacer(),
               Container(
                 padding: EdgeInsets.all(25),
                 child: Column(
@@ -212,6 +211,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                   ],
                 ),
               ),
+              Spacer(),
               GestureDetector(
                 onTap: () {},
                 child: Container(

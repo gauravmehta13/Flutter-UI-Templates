@@ -74,11 +74,13 @@ class _MovieDetailsState extends State<MovieDetails> {
                 )),
             Center(
                 child: new BackdropFilter(
-              filter: new ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
-              child: new Container(),
+              filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: new Container(
+                height: 10,
+              ),
             )),
             Container(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withOpacity(0.5),
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
