@@ -30,6 +30,7 @@ class _MovieDetailsState extends State<MovieDetails> {
   }
 
   int _current = 0;
+  
 
   @override
   Widget build(BuildContext context) {
