@@ -1,8 +1,12 @@
 import 'dart:math';
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import '../Constants.dart';
+import 'Components/curvedLine.dart';
 
 class Seats {
   bool selected;
@@ -20,11 +24,32 @@ class ConfirmMovieSeat extends StatefulWidget {
   _ConfirmMovieSeatState createState() => _ConfirmMovieSeatState();
 }
 
+final DateTime date = DateTime(2021, 9, 7, 10);
+
 class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
+  List<DateTime> movieTime = [];
   List<Seats> seats = [];
+
+  ok() {
+    final myList = List<DateTime>.generate(6, (index) {
+      return date;
+    });
+
+    var d = date;
+    for (var i = 0; i < myList.length; i++) {
+      myList[i] = d;
+      d = d.add(new Duration(hours: 2, minutes: 30));
+      print(d);
+    }
+
+    movieTime = myList;
+    print(movieTime);
+  }
+
   void initState() {
     super.initState();
     init();
+    ok();
   }
 
   late int price = 0;
@@ -36,7 +61,6 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
         setState(() {
           total = total + 1;
         });
-      print("object");
     }
     print(total);
     setState(() {
@@ -57,6 +81,8 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
     }
   }
 
+  int _current = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +94,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
             IconButton(
                 onPressed: () {},
                 icon: Icon(
-                  FontAwesomeIcons.tags,
+                  FontAwesomeIcons.qrcode,
                   size: 18,
                 )),
           ]),
@@ -99,7 +125,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Pacific Rim",
+                      "Captive State",
                       style: GoogleFonts.montserrat(
                           color: Colors.white,
                           fontSize: 30,
@@ -109,12 +135,51 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                 ),
               ),
               Spacer(),
+              CarouselSlider(
+                options: CarouselOptions(
+                    autoPlay: false,
+                    height: 50,
+                    viewportFraction: 0.25,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    onPageChanged: (e, x) {
+                      setState(() {
+                        _current = e;
+                      });
+                      print(movieTime[e]);
+                    }),
+                items: List.generate(movieTime.length, (i) {
+                  return Text(DateFormat.jm().format(movieTime[i]),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: _current == i ? 20 : 16,
+                          color: _current == i
+                              ? Color(0xFFde3d36)
+                              : Colors.white));
+                }),
+              ),
               Container(
-                padding: EdgeInsets.all(25),
+                height: 50,
+                child: CustomPaint(
+                  painter: CurvePainter(),
+                  child: Container(),
+                ),
+              ),
+              Text("SCREEN",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.white,
+                  )),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: seats.length,
                       gridDelegate:
@@ -148,6 +213,7 @@ class _ConfirmMovieSeatState extends State<ConfirmMovieSeat> {
                   ],
                 ),
               ),
+              box20,
               box20,
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),

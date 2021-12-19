@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterui/Constants.dart';
 import 'package:flutterui/Movie%20Booking/MoviePage.dart';
 import 'package:flutterui/Widgets/Fade%20Route.dart';
@@ -23,9 +24,13 @@ class _MovieBookingHomePageState extends State<MovieBookingHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        statusBarColor: Color.fromARGB(255, 42, 44, 56),
+      ),
+      child: Scaffold(
+        body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topRight,
@@ -44,6 +49,7 @@ class _MovieBookingHomePageState extends State<MovieBookingHomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               box20,
+              box30,
               Container(
                 padding: EdgeInsets.all(25),
                 child: Row(
@@ -52,7 +58,7 @@ class _MovieBookingHomePageState extends State<MovieBookingHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Hello User!",
+                          "Hello Gaurav!",
                           style: GoogleFonts.montserrat(
                               color: Colors.white,
                               fontSize: 20,

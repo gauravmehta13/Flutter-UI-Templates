@@ -30,7 +30,6 @@ class _MovieDetailsState extends State<MovieDetails> {
   }
 
   int _current = 0;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +110,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Kaggitan\nHayatlar Dark",
+                          "Captive State",
                           style: GoogleFonts.montserrat(
                               color: Colors.white,
                               fontSize: 35,
@@ -155,7 +154,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                         ),
                         box10,
                         Text(
-                          "An Ironman Triathlon is one of a series of long-distance triathlon races organized by the World Triathlon Corporation, consisting of a 2.4-mile swim, a 112-mile bicycle ride and a marathon 26.22-mile run, raced in that order. It is widely considered one of the most difficult one-day sporting events in the world.",
+                          "After 10 years of extraterrestrial occupation, residents of Chicago must decide whether to continue to live under alien rule or support the resistance. When young Gabriel Drummond joins the insurgency, he soon finds himself under careful scrutiny from a shadowy figure who's trying to crush the rebellion and its plans for freedom.",
                           style: TextStyle(
                               color: Colors.white60,
                               fontSize: 12,
